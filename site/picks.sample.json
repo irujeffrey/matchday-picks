@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-11-10T04:17:00.000Z",
-  "date": "2026-11-10",
+  "updatedAt": "2026-01-01T10:00:00.000Z",
+  "date": "2026-01-01",
+  "criteria": {
+    "footballMinTopOutcome": 75,
+    "footballMinLead": 12,
+    "basketballMinGamesPerTeam": 10,
+    "basketballMinStandingsGap": 0.2,
+    "basketballMinExperimentalEstimate": 70,
+    "maxCombinedRecommendations": 5
+  },
   "picks": {
     "football": [],
     "basketball": [],

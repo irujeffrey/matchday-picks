@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Matchday — Recommended picks</title>
+<title>Matchday — Selective recommendations</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap');
 :root{--bg:#f1f4f6;--ink:#14212b;--muted:#71808d;--line:#e2e8ec;--navy:#101b25;--lime:#a8ed70;--white:#fff;--gold:#edc15d}
@@ -26,23 +26,19 @@
 .league{font:9px 'DM Mono';letter-spacing:.7px;text-transform:uppercase;color:#81909a}
 .tags{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .tag{border-radius:20px;padding:5px 8px;font:600 9px 'DM Mono';background:#eef2f4;color:#52616c}
-.certainty{border-radius:20px;padding:6px 9px;font:600 10px 'DM Mono';display:flex;gap:6px;align-items:center}
-.certainty.high{background:#e6f6dd;color:#3f762b}.certainty.medium{background:#fff4d8;color:#927021}
+.certainty{border-radius:20px;padding:6px 9px;font:600 10px 'DM Mono';background:#e6f6dd;color:#3f762b}
 .versus{display:grid;grid-template-columns:1fr 38px 1fr;align-items:center;gap:8px}.team{font-size:14px;font-weight:700;line-height:1.35}
 .away{text-align:right}.vs{text-align:center;font:10px 'DM Mono';color:#98a3aa}
 .pickbottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eff2f3;margin-top:16px;padding-top:13px;gap:12px}
 .prediction{font-size:10px;color:#687781}.prediction b{display:block;color:var(--ink);font-size:14px;margin:3px 0}
-.metric{font-size:22px;letter-spacing:-1px;font-weight:800;text-align:right;white-space:nowrap}
-.hightext{color:#4a8b31}.mediumtext{color:#a57c19}.kick{font:10px 'DM Mono';color:#74818a}
+.metric{font-size:22px;letter-spacing:-1px;font-weight:800;text-align:right;white-space:nowrap;color:#4a8b31}
+.kick{font:10px 'DM Mono';color:#74818a}
 .empty{grid-column:1/-1;border:1px dashed #ccd6db;background:#f8fafb;border-radius:13px;padding:48px 18px;text-align:center;color:#667681}
 .empty strong{font-size:15px;color:#24323d}.empty p{font-size:12px;line-height:1.7;margin:9px auto 0;max-width:440px}
 .note{margin-top:20px;color:#85919a;font-size:10px;line-height:1.7}.note a{color:#617b8d}
 .error{display:none;background:#fff1ed;color:#9b4939;padding:12px;border-radius:9px;font-size:11px;margin-bottom:12px}
 @media(max-width:850px){.layout{grid-template-columns:175px 1fr}.main{padding:25px}.cards{grid-template-columns:1fr}}
-@media(max-width:600px){.layout{display:block}.side{padding:12px 13px;display:block}.brand{padding:0 4px 12px}.caption,.sidefoot{display:none}.sports{display:flex;gap:8px}
-.sportnav{width:auto;margin:0;padding:9px 13px}.main{padding:20px 14px 35px}.top{margin-bottom:27px}.hero{align-items:start;gap:10px}
-.hero h1{font-size:28px}.hero p{font-size:12px;line-height:1.5}.date{white-space:nowrap;font-size:10px;padding:9px}
-.bar{align-items:start;gap:10px;flex-direction:column}.pick{padding:15px}.team{font-size:13px}}
+@media(max-width:600px){.layout{display:block}.side{padding:12px 13px;display:block}.brand{padding:0 4px 12px}.caption,.sidefoot{display:none}.sports{display:flex;gap:8px}.sportnav{width:auto;margin:0;padding:9px 13px}.main{padding:20px 14px 35px}.top{margin-bottom:27px}.hero{align-items:start;gap:10px}.hero h1{font-size:28px}.hero p{font-size:12px;line-height:1.5}.date{white-space:nowrap;font-size:10px;padding:9px}.bar{align-items:start;gap:10px;flex-direction:column}.pick{padding:15px}.team{font-size:13px}}
 </style>
 </head>
 <body>
@@ -55,15 +51,15 @@
     <button class="sportnav" data-filter="football">⚽ &nbsp; Football</button>
     <button class="sportnav" data-filter="basketball">🏀 &nbsp; Basketball</button>
   </div>
-  <div class="sidefoot">One combined daily shortlist<br>Only eligible picks at 60% or above are shown.</div>
+  <div class="sidefoot">One combined daily shortlist<br>Maximum five selections. No forced picks.</div>
 </aside>
 <main class="main">
   <div class="top"><div>Sports analysis &nbsp;/&nbsp; <b>Recommended picks</b></div><div class="status"><span class="pulse"></span><span id="updated">Loading picks…</span></div></div>
-  <header class="hero"><div><div class="eyebrow">TODAY’S COMBINED SHORTLIST</div><h1 id="title">Recommended picks</h1><p id="subtitle">Football and basketball recommendations together on one page.</p></div><div class="date" id="date">Today</div></header>
+  <header class="hero"><div><div class="eyebrow">TODAY’S SELECTIVE SHORTLIST</div><h1 id="title">Recommended picks</h1><p id="subtitle">Only the strongest qualifying candidates across football and basketball.</p></div><div class="date" id="date">Today</div></header>
   <div class="bar"><h2>Today’s recommendations <span class="kick" id="pickCount"></span></h2><div class="filters"><button class="filter active" data-filter="all">All sports</button><button class="filter" data-filter="football">Football</button><button class="filter" data-filter="basketball">Basketball</button></div></div>
   <div class="error" id="error"></div>
   <section class="cards" id="picks"><div class="empty">Loading daily recommendations…</div></section>
-  <p class="note">Football percentages are supplied by API-Football. Basketball figures are experimental model estimates derived from current-season win rates and home advantage; they are not calibrated probabilities and are not directly comparable with football percentages. Picks are displayed together and ordered by kickoff time, not by a cross-sport probability ranking. A 60% threshold is applied separately to each sport. No prediction is a guarantee. Data: <a href="https://www.api-football.com/" target="_blank" rel="noreferrer">API-Football</a> and <a href="https://api-ninjas.com/api/basketball" target="_blank" rel="noreferrer">API Ninjas</a>.</p>
+  <p class="note">Football: a selection must have an API-Football top 1X2 outcome of at least 75%, leading the second outcome by at least 12 percentage points. Basketball: both teams must have at least 10 games played, a standings win-rate gap of at least 20 percentage points, and an experimental model estimate of at least 70%. Basketball estimates are not calibrated probabilities. The engine keeps at most five candidates. Its ranking score is a heuristic, not a cross-sport probability comparison. No prediction is a guarantee. Sources: <a href="https://www.api-football.com/" target="_blank" rel="noreferrer">API-Football</a> and <a href="https://api-ninjas.com/api/basketball" target="_blank" rel="noreferrer">API Ninjas</a>.</p>
 </main>
 </div>
 <script>
@@ -71,43 +67,46 @@ let data=null,filter='all';
 function dateLabel(s){return new Intl.DateTimeFormat(undefined,{weekday:'short',day:'numeric',month:'short',year:'numeric'}).format(new Date(s+'T12:00:00'))}
 function timeLabel(s){if(!s)return 'Time unavailable';return new Intl.DateTimeFormat(undefined,{hour:'2-digit',minute:'2-digit',timeZoneName:'short'}).format(new Date(s))}
 function allPicks(){
-  const f=(data?.picks?.football||[]).filter(p=>Number(p.confidence)>=60);
-  const b=(data?.picks?.basketball||[]).filter(p=>Number(p.confidence)>=60);
-  return [...f,...b].sort((a,b)=>new Date(a.date)-new Date(b.date));
-}
-function card(p){
-  const isFootball=p.sport==='football',high=Number(p.confidence)>=70,tier=high?'high':'medium';
-  const metricLabel=isFootball?'API PREDICTION':'MODEL ESTIMATE';
-  return `<article class="pick">
-    <div class="picktop"><span class="league">${escapeHtml(p.league||'Match')} · ${isFootball?'⚽ FOOTBALL':'🏀 BASKETBALL'}</span>
-    <span class="tags"><span class="tag">${metricLabel}</span><span class="certainty ${tier}">${high?'HIGH':'MEDIUM'} · ${high?'70%+':'60–69%'}</span></span></div>
-    <div class="versus"><div class="team">${escapeHtml(p.home||'Home')}</div><div class="vs">VS</div><div class="team away">${escapeHtml(p.away||'Away')}</div></div>
-    <div class="pickbottom"><div class="prediction">RECOMMENDED PICK<b>${escapeHtml(p.pick||'No selection')}</b><span class="kick">${timeLabel(p.date)}</span></div>
-    <div class="metric ${high?'hightext':'mediumtext'}">${Math.round(Number(p.confidence))}%</div></div>
-  </article>`;
+  if(Array.isArray(data?.picks?.recommended)) return data.picks.recommended;
+  return [...(data?.picks?.football||[]),...(data?.picks?.basketball||[])]
+    .sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(0,5);
 }
 function escapeHtml(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function card(p){
+  const football=p.sport==='football';
+  const label=football?'API 1X2 · STRICT FILTER':'STANDINGS MODEL · EXPERIMENTAL';
+  return `<article class="pick">
+    <div class="picktop"><span class="league">${escapeHtml(p.league||'Match')} · ${football?'⚽ FOOTBALL':'🏀 BASKETBALL'}</span>
+    <span class="tags"><span class="tag">${label}</span><span class="certainty">${football?'STRONG API SIGNAL':'MODEL SHORTLIST'}</span></span></div>
+    <div class="versus"><div class="team">${escapeHtml(p.home||'Home')}</div><div class="vs">VS</div><div class="team away">${escapeHtml(p.away||'Away')}</div></div>
+    <div class="pickbottom"><div class="prediction">RECOMMENDED PICK<b>${escapeHtml(p.pick||'No selection')}</b><span class="kick">${timeLabel(p.date)}</span></div>
+    <div class="metric">${Math.round(Number(p.confidence))}%${football?'':'*'}</div></div>
+  </article>`;
+}
 function render(){
   if(!data)return;
   const all=allPicks(),list=filter==='all'?all:all.filter(p=>p.sport===filter);
   document.getElementById('title').textContent=filter==='all'?'Recommended picks':`Recommended ${filter} picks`;
-  document.getElementById('subtitle').textContent=filter==='all'?'Football and basketball recommendations together on one page.':`Eligible ${filter} recommendations for today.`;
+  document.getElementById('subtitle').textContent=filter==='all'?'Only the strongest qualifying candidates across both sports.':`Selected ${filter} recommendations from the combined shortlist.`;
   document.getElementById('date').textContent=dateLabel(data.date);
   document.getElementById('updated').textContent='Updated '+timeLabel(data.updatedAt);
   document.getElementById('pickCount').textContent=`${list.length} picks`;
   const emptyTitle=filter==='all'?'NO RECOMMENDED PICKS TODAY':`NO ${filter.toUpperCase()} PICKS TODAY`;
-  const emptyText=filter==='all'?'No football or basketball selection met its eligibility threshold today.':'No selection in this sport met the eligibility threshold today.';
-  document.getElementById('picks').innerHTML=list.length?list.map(card).join(''):`<div class="empty"><strong>${emptyTitle}</strong><p>${emptyText} We do not force recommendations when the available evidence is insufficient.</p></div>`;
+  const emptyText=filter==='all'?'No fixture met the strict selection rules today.':'No fixture in this sport made the combined shortlist today.';
+  document.getElementById('picks').innerHTML=list.length?list.map(card).join(''):`<div class="empty"><strong>${emptyTitle}</strong><p>${emptyText} We do not force recommendations when evidence is insufficient.</p></div>`;
 }
 function setFilter(next){
   filter=next;
-  document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));
+  document.querySelectorAll('[data-filter]').forEach(button=>button.classList.toggle('active',button.dataset.filter===filter));
   render();
 }
-document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>setFilter(b.dataset.filter)));
-fetch('./picks.json?ts='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('No daily picks snapshot');return r.json();}).then(d=>{data=d;render();}).catch(()=>{
- document.getElementById('picks').innerHTML='<div class="empty"><strong>Daily picks are not set up yet</strong><p>Add the APIFOOTBALL_KEY and API_NINJAS_KEY secrets to your GitHub repository, then run the daily workflow.</p></div>';
- document.getElementById('updated').textContent='Setup needed';
-});
+document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>setFilter(button.dataset.filter)));
+fetch('./picks.json?ts='+Date.now(),{cache:'no-store'})
+  .then(response=>{if(!response.ok)throw Error('No daily picks snapshot');return response.json();})
+  .then(result=>{data=result;render();})
+  .catch(()=>{
+    document.getElementById('picks').innerHTML='<div class="empty"><strong>Daily picks are not available yet</strong><p>Check that the GitHub Actions workflow has run successfully and that both API secrets are configured.</p></div>';
+    document.getElementById('updated').textContent='Data unavailable';
+  });
 </script>
 </body></html>
