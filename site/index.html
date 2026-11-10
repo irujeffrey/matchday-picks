@@ -8,12 +8,7 @@
 <main class="main"><div class="top"><div>Sports analysis &nbsp;/&nbsp; <b id="sportLabel">Football</b></div><div class="status"><span class="pulse"></span><span id="updated">Loading picks…</span></div></div><header class="hero"><div><div class="eyebrow">TODAY’S SHORTLIST</div><h1 id="title">Daily football picks</h1><p id="subtitle">A focused shortlist, ranked by confidence.</p></div><div class="date" id="date">Today</div></header><div class="bar"><h2>Today’s picks <span class="kick" id="pickCount"></span></h2><div class="legend"><span><i class="swatch" style="background:#67b94c"></i>High · 70%+</span><span><i class="swatch" style="background:#e0b23e"></i>Medium · 60–69%</span></div></div><div class="error" id="error"></div><section class="cards" id="picks"><div class="empty">Loading daily picks…</div></section><p class="note">Confidence is a model probability estimate, not a guarantee. Football picks use API-Football’s prediction endpoint. Basketball picks are estimated from current-season win rates and home advantage. Only picks at 60% or higher are shown. API Ninjas free tier provides current-season games and standings, but no live score details and no commercial use. Data: <a href="https://www.api-football.com/" target="_blank" rel="noreferrer">API-Football</a> and <a href="https://api-ninjas.com/api/basketball" target="_blank" rel="noreferrer">API Ninjas</a>.</p></main></div>
 <script>
 let data=null,sport='football';
-function dateLabel(data.date){
-  return new Intl.DateTimeFormat(undefined,{
-    weekday:'short',day:'numeric',month:'short',year:'numeric'
-  }).format(new Date(s+'T12:00:00'));
-}
-
+function dateLabel(s){return new Intl.DateTimeFormat(undefined,{weekday:'short',day:'numeric',month:'short',year:'numeric'}).format(new Date(s+'T12:00:00'))}
 function timeLabel(s){
   return new Intl.DateTimeFormat(undefined,{
     hour:'2-digit',minute:'2-digit',timeZoneName:'short'
